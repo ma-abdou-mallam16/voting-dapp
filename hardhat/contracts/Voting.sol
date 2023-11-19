@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.19;
+pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Voting is Ownable {
 
     uint public winningProposalID;
-    uint private winningProposalIDTempory;
     
     struct Voter {
         bool isRegistered;
@@ -33,6 +32,7 @@ contract Voting is Ownable {
     Proposal[] proposalsArray;
     mapping (address => Voter) voters;
 
+
     event VoterRegistered(address voterAddress); 
     event WorkflowStatusChange(WorkflowStatus previousStatus, WorkflowStatus newStatus);
     event ProposalRegistered(uint proposalId);
@@ -57,7 +57,6 @@ contract Voting is Ownable {
         return proposalsArray[_id];
     }
 
- 
     // ::::::::::::: REGISTRATION ::::::::::::: // 
 
     function addVoter(address _addr) external onlyOwner {
@@ -68,7 +67,6 @@ contract Voting is Ownable {
         emit VoterRegistered(_addr);
     }
  
-
     // ::::::::::::: PROPOSAL ::::::::::::: // 
 
     function addProposal(string calldata _desc) external onlyVoters {
@@ -79,7 +77,8 @@ contract Voting is Ownable {
         Proposal memory proposal;
         proposal.description = _desc;
         proposalsArray.push(proposal);
-        emit ProposalRegistered(proposalsArray.length - 1);
+        // proposalsArray.push(Proposal(_desc,0));
+        emit ProposalRegistered(proposalsArray.length-1);
     }
 
     // ::::::::::::: VOTE ::::::::::::: //
@@ -92,10 +91,6 @@ contract Voting is Ownable {
         voters[msg.sender].votedProposalId = _id;
         voters[msg.sender].hasVoted = true;
         proposalsArray[_id].voteCount++;
-
-        if (proposalsArray[_id].voteCount > proposalsArray[winningProposalIDTempory].voteCount) {
-            winningProposalIDTempory = _id;
-        }
 
         emit Voted(msg.sender, _id);
     }
@@ -135,8 +130,13 @@ contract Voting is Ownable {
 
    function tallyVotes() external onlyOwner {
        require(workflowStatus == WorkflowStatus.VotingSessionEnded, "Current status is not voting session ended");
-       
-       winningProposalID = winningProposalIDTempory;
+       uint _winningProposalId;
+      for (uint256 p = 0; p < proposalsArray.length; p++) {
+           if (proposalsArray[p].voteCount > proposalsArray[_winningProposalId].voteCount) {
+               _winningProposalId = p;
+          }
+       }
+       winningProposalID = _winningProposalId;
        
        workflowStatus = WorkflowStatus.VotesTallied;
        emit WorkflowStatusChange(WorkflowStatus.VotingSessionEnded, WorkflowStatus.VotesTallied);
