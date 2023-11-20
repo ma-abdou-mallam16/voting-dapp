@@ -2,7 +2,13 @@
 
     ## Pour la correction :
 
-    Lien vidéo :
+    NOTES : Toute l'architecture du front et du back sont présentent mais nous avons rencontré des erreurs qui, malgré nos efforts, n'ont pas pu être corrigées. Celles-ci incluent : 
+    - problèmes pour récupérer des évents. 
+    - problème pour changer le workflowStatus (erreur de type unknow) 
+Il semblerait que ça soit un problème pour communiquer directement avec le contrat, nous avons revérifié plusieurs fois l'addresse et l'api de ce dernier, sans succès. 
+L'application bloquant dès les premières phases du processus de vote, nous n'avons pas fait de vidéo pour la présenter... nous nous en excusons, et nous serions extrèmement intéressé de comprendre où étaient les erreurs. 
+
+    Lien vidéo : 
 
     Lien Déploiement : 
 
@@ -53,41 +59,46 @@
     |-- /frontend
     |   |-- /app
     |       |-- /admin
+    |            |-- /changeWorflow
+    |                |--page.jsx
+    |            |-- /registerVoter
+    |                |--page.jsx
     |           |-- page.js
-    |       |-- /hooks
-    |           |-- useVoting.js
-    |       |-- /proposal
+    |       |-- /Voter
+    |            |-- /add-Proposal
+    |                     |--page.jsx
+    |            |-- /add-Vote
+    |                     |--page.js
     |           |-- page.js
-    |       |-- /providers
-    |           |-- VotingProvider.js
     |       |-- layout.js
     |       |-- page.js
     |   |-- /components
-    |       |-- /Admin
-    |           |-- AdminComponent.js
-    |           |-- Popup.js
-    |       |-- /Contract
-    |           |-- Contract.js
-    |       |-- /Disconnected
-    |           |-- Disconnected.js
+    |       |-- /finished
+    |           |-- Page.js
     |       |-- /Footer
-    |           |-- Footer.js
-    |       |-- /Header
-    |           |-- Header.js
-    |       |-- /Popup
-    |           |-- Popup.js
-    |       |-- /Proposals
-    |           |-- Proposals.js
-    |       |-- /Sidebar
-    |           |-- Sidebar.js
-    |       |-- /Voters
-    |           |-- Voters.js
-    |       |-- /Voting
-    |           |-- Voting.js
-    |       |-- /WorkflowStatus
-    |           |-- WorkflowStatus.js
+    |           |-- gooter.jsx
+    |       |-- /Nav-bar
+    |           |-- page.jsx
+    |       |-- /not-allowed
+    |           |-- Page.jsx
+    |       |-- /table-proposals
+    |           |-- /proposal
+    |                |--page.jsx
+    |           |--page.jsx
+    |       |-- /Welcome-stepper
+    |           |-- Page.jsx
+    |       |-- /whitelist
+    |           |-- /voter-card
+    |                |--page.jsx
+    |            |--page.jsx
+    |       |-- /winning-proposal
+    |           |-- page.jsx
+
     |   |-- /constants
     |       |-- index.js
+    |       |-- proposalTable.js
+    |       |-- voterTable.js
+    |       |-- workflowStatus.js
     |   |-- /public
     |       |-- next.svg
     |       |-- vercel.svg
