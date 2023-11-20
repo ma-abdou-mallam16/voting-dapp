@@ -6,7 +6,7 @@
     - problèmes pour récupérer des évents. 
     - problème pour changer le workflowStatus (erreur de type unknow) 
     Il semblerait que ça soit un problème pour communiquer directement avec le contrat, nous avons revérifié plusieurs fois l'addresse et l'api de ce dernier, sans succès. 
-    L'application bloquant dès les premières phases du processus de vote, nous n'avons pas fait de vidéo pour la présenter... nous nous en excusons, et nous serions      extrèmement intéressé de comprendre où étaient les erreurs. 
+    L'application bloquant dès les premières phases du processus de vote, nous n'avons pas fait de vidéo pour la présenter... nous nous en excusons, et nous serions extrèmement intéressé de comprendre où étaient les erreurs. 
 
     Lien vidéo : 
 
