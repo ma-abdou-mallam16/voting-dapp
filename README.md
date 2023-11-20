@@ -1,112 +1,36 @@
-# Dapp Voting
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-    ## Pour la correction :
+## Getting Started
 
-    Lien vidéo :
+First, run the development server:
 
-    Lien Déploiement : 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-    Déployé sur Sepolia
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-    Groupe constitué de :
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-    Abdou Mallam Mahamadou Aminou
-    
-    Arnaud Clary
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-    ## Détails
+## Learn More
 
-        ### Contract :
+To learn more about Next.js, take a look at the following resources:
 
-        La faille a été corrigé comme suit :
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-        ### Sécurité et bonnes pratiques :
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-            - Vérification de limites et gestion des dépassements : dans 'tallyVotes()'.
+## Deploy on Vercel
 
-            - Vérification si 'proposalsArray' n'est pas vide avant de faire des itéations dessus pour éviter les débordements.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-            - Gestion des erreurs : utiliser des énumérations plutôt que des chaînes pour les états de worflow. Les énumérations sont plus sûres et moins coûteuses en gaz.
-
-        Au niveau de la bonne pratique nous avons fait ceci :
-
-        ### Optimisation des coûts de gaz :
-            
-            - Utilisation de 'bytes32' pour le stockage des descriptions de proposition : cela réduit la consommation de gaz car les comparaisons de 'bytes32' sont moins coûteuses que celles des chaînes de caractères.
-
-            - DOS_GAS_LIMIT : dans "tallyVotes", si n'y a pas beaucoup de propositions, la mémoire se fige car le coût de la fonction est limité pour l'exécution.
-            
-            - Utilisation de 'mapping' pour stocker les propositions : remplacer 'proposalsArray' par un mapping de type 'mapping(uint =>Proposal) proposals;'. Cela permet un accès plus efficace aux propositions par leur ID.
-
-        ### Front 
-
-        Voici la liste de la stack utilisée pour la réalisation du projet :
-
-        - Frontend : NextJS - Chakra-UI
-        - Banckend : Hardhat - Wagmi - Viem - Rainbowkit - openzepplin
-        - Réseaux : Sepolia - Hardhat
-        - Wallet : MetaMask
-
-    ## Structure du projet :
-
-    /voting-dapp
-    |-- /frontend
-    |   |-- /app
-    |       |-- /admin
-    |           |-- page.js
-    |       |-- /hooks
-    |           |-- useVoting.js
-    |       |-- /proposal
-    |           |-- page.js
-    |       |-- /providers
-    |           |-- VotingProvider.js
-    |       |-- layout.js
-    |       |-- page.js
-    |   |-- /components
-    |       |-- /Admin
-    |           |-- AdminComponent.js
-    |           |-- Popup.js
-    |       |-- /Contract
-    |           |-- Contract.js
-    |       |-- /Disconnected
-    |           |-- Disconnected.js
-    |       |-- /Footer
-    |           |-- Footer.js
-    |       |-- /Header
-    |           |-- Header.js
-    |       |-- /Popup
-    |           |-- Popup.js
-    |       |-- /Proposals
-    |           |-- Proposals.js
-    |       |-- /Sidebar
-    |           |-- Sidebar.js
-    |       |-- /Voters
-    |           |-- Voters.js
-    |       |-- /Voting
-    |           |-- Voting.js
-    |       |-- /WorkflowStatus
-    |           |-- WorkflowStatus.js
-    |   |-- /constants
-    |       |-- index.js
-    |   |-- /public
-    |       |-- next.svg
-    |       |-- vercel.svg
-    |   |-- .env
-    |   |-- .gitignore
-    |   |-- jsconfig.json
-    |   |-- next.config.js
-    |   |-- package.json
-    |   |-- README.md
-    |   |-- yarn.lock
-    |-- /hardhat
-    |   |-- /contracts
-    |       |-- Voting.sol
-    |   |-- /scripts
-    |       |-- deploy.js
-    |   |-- .env
-    |   |-- .gitignore
-    |   |-- hardhat.config.js
-    |   |-- package.json
-    |   |-- README.md
-    |   |-- yarn.lock
-    |-- README.md
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
